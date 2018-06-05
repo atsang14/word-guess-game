@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<p>Press any Key to Start!</p>
+<p>Start Guessing =) !</p>
+
+<div>Wins: <p id="wins"></p> </div>
+
+<p>Current Word</p>
+<p id="unkownWord"></p>
+
+
+<div>
+  <p>Number of Guesses Remaining </p>
+  <span id="guessesLeft"></span>
+
+</div>
+
+<script type="text/javascript">
+    var   wins          = -1;
+    var   losses        = 10
+    var   gameLibrary   = ["pacman", "kong"];
+    var   gameNameArray = [];
+    var   underLineChar = [];
+    var   input         = "";
+    var   guesses       = [];
+    var   alreadyGuess  = "You've Already Guessed that!";
+    var   attempts      = 0;
+    var   attemptsLeft  = 10;
+
+    document.onkeyup = function gameOn(event){
+      input = event.key;
+      // checkIfSame(guesses, input);
+      // guesses.push(input);
+           if((guesses.length == 1)||(guesses.length > 10)){
+        startGame();
+      }
+      console.log(guesses);
+      console.log(input);
+    }
+
+
+    // starts the game by finding a random array element and turning the element into an array
+    function startGame(){
+        // console.log(input);
+        randomGame();
+        addUnknownChar();
+        document.querySelector('#unkownWord').innerHTML = underLineChar;
+    }
+
+    // checks to see if the input matches anything in the array
+    function checkGuess(guess){
+         for(var i = 0; i<gameNameArray.length; i++){
+            if(guess == gameNameArray[i]){
+                underLineChar[i] = guess;
+                console.log(underLineChar[i]);
+            }
+       } 
+    }
+
+    function checkIfSame(guesses, input){
+       for(var i = 0; i < attempts; i++){
+            if(guesses[i] != input){
+                guesses.push(input);
+                console.log(guesses);
+            } else {
+                document.querySelector("#guessesLeft").innerHTML = alreadyGuess;
+            }
+        }
+    }
+
+    function randomGame(){
+      var gameName = gameLibrary[Math.floor(Math.random()*gameLibrary.length)];
+      gameNameArray = gameName.split("");
+    }
+
+    function addUnknownChar() {
+        underLineChar = [];
+        for(var i=0; i < gameNameArray.length; i++){
+        underLineChar.push("_");
+        console.log(underLineChar);
+      }
+    }
+
+
+
+</script>
+</body>
+</html>
+
+
+<!-- var item = items[Math.floor(Math.random()*items.length)]; -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
