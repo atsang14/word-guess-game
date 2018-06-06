@@ -1,83 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+  <title></title>
 </head>
 <body>
 
 <p>Press any Key to Start!</p>
 <p>Start Guessing =) !</p>
 
-<div>Wins: <p id="wins"></p> </div>
+<div><p>Wins: <span id="wins"></span></p></div>
 
 <p>Current Word</p>
 <p id="unkownWord"></p>
 
 
 <div>
-  <p>Number of Guesses Remaining </p>
-  <span id="guessesLeft"></span>
-
+  <p>Number of Guesses Remaining <span id="guessesLeft"></span></p>
+  <p>Letters Already Guessed <span id="guessed"></span></p>
 </div>
 
 <script type="text/javascript">
-    var   wins          = -1;
-    var   losses        = 10
+    var   wins          = 0;
     var   gameLibrary   = ["pacman", "kong"];
     var   gameNameArray = [];
     var   underLineChar = [];
     var   input         = "";
     var   guesses       = [];
-    var   alreadyGuess  = "You've Already Guessed that!";
-    var   attempts      = 0;
     var   attemptsLeft  = 10;
 
+    startGame();
+    document.querySelector('#unkownWord').innerHTML = underLineChar;
+    document.querySelector("#guessed").innerHTML = guesses;
+    
     document.onkeyup = function gameOn(event){
       input = event.key;
-      // checkIfSame(guesses, input);
-      // guesses.push(input);
-           if((guesses.length == 1)||(guesses.length > 10)){
+      checkGuess(input);
+      checkIfSame(guesses,input);
+      document.querySelector("#guessed").innerHTML = guesses;
+      document.querySelector('#unkownWord').innerHTML = underLineChar;
+      if(attemptsLeft > 0){
+        document.querySelector('#guessesLeft').innerHTML = attemptsLeft;
+        checkWonGame();
+      } else if (attemptsLeft == 0){
         startGame();
       }
-      console.log(guesses);
-      console.log(input);
-    }
-
-
+    } 
+   
     // starts the game by finding a random array element and turning the element into an array
     function startGame(){
         // console.log(input);
+        guesses = [];
+        attemptsLeft = 10;
         randomGame();
         addUnknownChar();
+        document.querySelector("#guessed").innerHTML = guesses;
         document.querySelector('#unkownWord').innerHTML = underLineChar;
+        document.querySelector('#guessesLeft').innerHTML = attemptsLeft;
+        document.querySelector('#wins').innerHTML = wins;
     }
 
-    // checks to see if the input matches anything in the array
+    // this function adds the underline character depending on how long the array is
+    // updates underLineChar[i] depending on guess(input variable)
     function checkGuess(guess){
-         for(var i = 0; i<gameNameArray.length; i++){
+         var counter = 0;
+         for(var i = 0; i < gameNameArray.length; i++){
             if(guess == gameNameArray[i]){
                 underLineChar[i] = guess;
-                console.log(underLineChar[i]);
             }
-       } 
+          } 
     }
 
-    function checkIfSame(guesses, input){
-       for(var i = 0; i < attempts; i++){
-            if(guesses[i] != input){
-                guesses.push(input);
-                console.log(guesses);
-            } else {
-                document.querySelector("#guessesLeft").innerHTML = alreadyGuess;
+    // this function checks if the input is anywhere else in the array
+    // updates guesses[] by checking input
+    function checkIfSame(guesses, input){ 
+      var finder = 0;
+      
+      // looking at first guess 
+      if (guesses.length == 1){
+          if(guesses[0] != input){
+            guesses.push(input);
+            console.log(guesses);
+          }  
+      } else {
+          for (var i = 0; i < guesses.length; i++){
+            if(guesses[i] == input){
+             finder++;
+            }
+          }
+          if(finder == 0){
+            guesses.push(input);
+        } 
+      }      
+    }
+
+    // this function checks if you won the game
+    // if you won the game, then reset back to normal settings
+    function checkWonGame(){
+        var counter = 0; 
+        for(var i = 0; i < underLineChar.length; i++){
+            if(underLineChar[i] == gameNameArray[i]){
+              counter++;
             }
         }
+        if(counter == gameNameArray.length){
+          document.querySelector("#wins").innerHTML = wins++;
+          guesses = []
+          startGame();
+        } 
     }
-
+    // finds a random element in the array gameNameArray.
     function randomGame(){
       var gameName = gameLibrary[Math.floor(Math.random()*gameLibrary.length)];
       gameNameArray = gameName.split("");
     }
 
+    // adds "_" depending on how the arrays length
     function addUnknownChar() {
         underLineChar = [];
         for(var i=0; i < gameNameArray.length; i++){
@@ -86,14 +123,30 @@
       }
     }
 
-
-
 </script>
 </body>
 </html>
 
 
-<!-- var item = items[Math.floor(Math.random()*items.length)]; -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
