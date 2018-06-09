@@ -7,6 +7,7 @@
     var   input         = "";
     var   guesses       = [];
     var   attemptsLeft  = 10;
+    var   notToInclude  = ['Enter', 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowLeft', 'ArrowDown'];
 
     startGame();
     document.querySelector('#unkownWord').innerHTML = underLineChar;
@@ -53,7 +54,7 @@
         } 
       }
 
-      if((guesses.includes(guess) <= 0) && (gameNameArray.includes(guess) <= 0)){
+      if((guesses.includes(guess) <= 0) && (gameNameArray.includes(guess) <= 0) && (notToInclude.include(guess) <= 0)){
         guesses.push(guess);
         attemptsLeft--;
         if(attemptsLeft == 0 ){
