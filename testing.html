@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+<style type="text/css">
+
+p{
+  height: 45px
+}
+.game {
+    background-color: black;
+    color: white;
+    width: 410px;
+    padding: 20px;
+    margin-left: 49.2%;
+    position: relative;
+    top: 1px;
+    border-style: inset;
+    border-color: cyan;
+    height: -webkit-fill-available;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.pacman {
+    display: none; 
+    padding: 73px;
+    position: relative;
+    bottom: 610.7px;
+    right: 73px;
+}
+.divider-wrapper {
+    width: 550px;
+    height: 500px;
+    margin: 30px auto;
+    position: relative;
+    margin-left: 250px;
+}
+  .divider-wrapper:hover { cursor: none; }
+ 
+.divider-bar {
+    position: absolute;
+    width: 4px;
+    left: 80%;
+    top: 0px;
+    bottom: -3px;
+    background: #d100b1;
+    -webkit-box-shadow: 0 0 10px 1px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 0 10px 1px rgba(0,0,0,0.4);
+    box-shadow: 0 0 10px 1px rgba(0,0,0,0.4);
+}
+ 
+  .code-wrapper {
+    border: 2px solid #222;
+    display: block;
+    overflow: hidden;
+    width: 900px;
+    height: 100%;
+
+    /* position: relative; */
+    /* background: url(https://25.media.tumblr.com/b926f21…/tumblr_n1dlehePXV1qgfz6mo1_1280.jpg) no-repeat; */
+    background-size: cover;
+	}
+ 
+  .design-wrapper, .design-image {
+    border-radius: 0 8px 8px 0;
+    -moz-border-radius: 0 8px 8px 0;
+    -webkit-border-radius: 0 8px 8px 0;
+  }
+
+/*  .design-wrapper {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+ 
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+  }*/
+    .design-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+ 
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+ 
+      background: url("https://25.media.tumblr.com/afac00f83a373b58e00da1385faa4bbe/tumblr_n17rf1oSEj1qgfz6mo1_500.jpg") no-repeat;
+      background-size: cover;
+    }
+</style>
+</head>
+<body>
+
+<div class="wrapper1">
+    <div class="divider-wrapper">
+      <div class="code-wrapper">
+        <div class="design-wrapper">
+            
+            <div class="game" id="hideGame" onkeypress="openGame()">
+              
+              <p>Press any Key to Start!</p>
+              <p>Start Guessing =) !</p>
+
+              <div>
+                <p>Wins: <span id="wins"></span></p></div>
+
+              <p>Current Word</p>
+              <p id="unkownWord"></p>
+              
+              <div>
+                  <p>Number of Guesses Remaining <span id="guessesLeft"></span></p>
+                  <p>Letters Already Guessed <span id="guessed"></span></p>
+              </div>
+            </div>
+            
+            <div class="pacman" id="pacman">
+                <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"></span>
+                <br />
+                <div align="center" class="tablib_content_container tablib_content_container0 " id="one_id" style="display: block;">
+                  <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br /></span></div>
+                  <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"></span>
+                  <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><embed allowscriptaccess="always" width="440" height="375" name="neavePacMan" pluginspage="http://get.adobe.com/flashplayer/" quality="high" src="http://www.neave.com/games/get_game.php?swf=pacman" title="Adobe Flash Player" type="application/x-shockwave-flash" width="100%" wmode="opaque"></embed><br /></span>
+                  <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"><br />• use arrow keys to move<br />P = pause, Q = quit, M = mute sound</span>
+                  <span style="font-family: &quot;courier new&quot; , &quot;courier&quot; , monospace;"></span>
+            </div>  
+
+        </div>
+      </div>
+      <div class="divider-bar"></div>
+    </div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript" src="js/game.js">
+</script>
+
+</body>
+</html>

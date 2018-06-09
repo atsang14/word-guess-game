@@ -1,3 +1,5 @@
+    
+
     var   wins          = 0;
     var   gameLibrary   = ["pacman", "kong"];
     var   gameNameArray = [];
@@ -10,20 +12,28 @@
     document.querySelector('#unkownWord').innerHTML = underLineChar;
     document.querySelector("#guessed").innerHTML = guesses;
 
-    document.onkeyup = function gameOn(event){
-      var input = event.key;
+
+    document.onkeyup = gameOn; 
+
+    function gameOn(event){
+      var input = event.key;  
       
+      if(input == 'Enter'){
+        document.getElementById('rap').style.display = 'none';
+        document.getElementById('wrapper1').style.display = 'block';
+      }
+
       checkGuess(input);
       checkWonGame();
       display();
     }
-   
+    
+    // This function starts a new game by setting guesses array back to nothing
+    // and attemptsLeft back to 10 and calls reset() function to reset the rest 
     function startGame(){
-        // console.log(input);
         guesses = [];
         attemptsLeft = 10;
-        // randomGame();
-        // addUnknownChar();
+
         reset();
         document.querySelector("#guessed").innerHTML = guesses;
         document.querySelector('#unkownWord').innerHTML = underLineChar;
@@ -31,9 +41,12 @@
         document.querySelector('#wins').innerHTML = wins;
     }    
 
+    // this function replaces the underLineChar 
+    // and pushes guess(input) into guesses array if its not already in the array
+    // it will also decrement the attemptsLeft. 
     function checkGuess(guess){
-      // var check = guesses.inlcude(input);
       var counter = 0;
+
       for(var i = 0; i < gameNameArray.length; i++){
         if(gameNameArray[i] == guess){
           underLineChar[i] = guess;
@@ -49,6 +62,7 @@
       }
     }
 
+    // checks to see if user won the game 
     function checkWonGame(){
         var counter = 0; 
         for(var i = 0; i < underLineChar.length; i++){
@@ -57,27 +71,14 @@
             }
         }
         if(counter == gameNameArray.length){
+          document.getElementById("pacman").style.display = "block";
           document.querySelector("#wins").innerHTML = wins++;
           guesses = []
           startGame();
         } 
     }
 
-    // function randomGame(){
-    //   var gameName = gameLibrary[Math.floor(Math.random()*gameLibrary.length)];
-    //   gameNameArray = gameName.split("");
-    // }
-
-    // // adds "_" depending on how the arrays length
-    // function addUnknownChar() {
-    //     underLineChar = [];
-
-    //     for(var i=0; i < gameNameArray.length; i++){
-     //      underLineChar.push("_");
-     //      console.log(underLineChar);
-    //  }
-    // }
-
+    // this function resets the game to it's normal setting
     function reset(){
       underLineChar = [];
       var gameName = gameLibrary[Math.floor(Math.random()*gameLibrary.length)];
@@ -85,11 +86,36 @@
 
       for(var i=0; i < gameNameArray.length; i++){
         underLineChar.push("_");
-        console.log(underLineChar);
       }
     }
+
+    // this functin displays the variables that will change in the game.
     function display(){
       document.querySelector("#guessed").innerHTML = guesses;
       document.querySelector('#unkownWord').innerHTML = underLineChar;
       document.querySelector('#guessesLeft').innerHTML = attemptsLeft;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
