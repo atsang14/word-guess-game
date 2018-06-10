@@ -13,7 +13,6 @@ body {
 }
 
 .wrapper {
-/*  display: block;*/
   position:relative;
   top:275px;
 }
@@ -105,8 +104,6 @@ p{
   height: 45px;
   color: #C6CBF5;
   font-family: 'Orbitron', sans-serif;
-  /*font-size: 140px;*/
-  /*font-weight: 1000;*/
 }
 
 .wrapper1{
@@ -123,6 +120,7 @@ p{
     top: 1px;
     border-style: inset;
     border-color: cyan;
+    border-radius: 5px;
     height: -webkit-fill-available;
     text-align: center;
     padding-top: 40px;
@@ -144,27 +142,13 @@ p{
 }
   .divider-wrapper:hover { cursor: none; }
  
-/*.divider-bar {
-    position: absolute;
-    width: 4px;
-    left: 80%;
-    top: 0px;
-    bottom: -3px;
-    background: #d100b1;
-    -webkit-box-shadow: 0 0 10px 1px rgba(0,0,0,0.4);
-    -moz-box-shadow: 0 0 10px 1px rgba(0,0,0,0.4);
-    box-shadow: 0 0 10px 1px rgba(0,0,0,0.4);
-}*/
- 
   .code-wrapper {
     border: 5px solid #7FFF00;
+    border-radius: 10px;
     display: block;
     overflow: hidden;
     width: 900px;
     height: 100%;
-
-    /* position: relative; */
-    /* background: url(https://25.media.tumblr.com/b926f21…/tumblr_n1dlehePXV1qgfz6mo1_1280.jpg) no-repeat; */
     background-size: cover;
   }
  
@@ -174,17 +158,6 @@ p{
     -webkit-border-radius: 0 8px 8px 0;
   }
 
-/*  .design-wrapper {
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
- 
-    -webkit-transform: translateX(50%);
-    transform: translateX(50%);
-  }*/
     .design-image {
       display: block;
       width: 100%;
@@ -198,16 +171,29 @@ p{
       background-size: cover;
     }
 
+    blink{
+      -webkit-animation:blink 1.5s linear infinite;
+      -moz-animation:blink 1.5s linear infinite;
+      animation:blink 1.5s linear infinite;
+    }
 
+    @-webkit-keyframes blink{
+      0%{opacity:1;}
+      50%{opacity:0;}
+      100%{opacity:1;}
+    }
 
+    @-moz-keyframes blink{
+      0%{opacity:1;}
+      50%{opacity:0;}
+      100%{opacity:1;}
+    }
 
-
-
-
-
-
-
-
+    @keyframes blink{
+      0%{opacity:1;}
+      50%{opacity:0;}
+      100%{opacity:1;}
+    }
 
 /*///////////////*/
 

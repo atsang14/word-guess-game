@@ -7,18 +7,17 @@
     var   input         = "";
     var   guesses       = [];
     var   attemptsLeft  = 10;
-    var   notToInclude  = ['Enter', 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowLeft', 'ArrowDown'];
+    var   notToInclude  = ['Enter', 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'Shift', 'Meta'];
 
     startGame();
     document.querySelector('#unkownWord').innerHTML = underLineChar;
     document.querySelector("#guessed").innerHTML = guesses;
-
-
+    
     document.onkeyup = gameOn; 
 
     function gameOn(event){
       var input = event.key;  
-      
+            
       if(input == 'Enter'){
         document.getElementById('rap').style.display = 'none';
         document.getElementById('wrapper1').style.display = 'block';
@@ -54,7 +53,11 @@
         } 
       }
 
-      if((guesses.includes(guess) <= 0) && (gameNameArray.includes(guess) <= 0) && (notToInclude.include(guess) <= 0)){
+      // && (notToInclude.include(guess) <= 0)
+      // && (guess !== 'Enter')
+      // debugger;
+
+      if((guesses.indexOf(guess) < 0) && (gameNameArray.indexOf(guess) < 0) && (notToInclude.indexOf(guess) < 0)){
         guesses.push(guess);
         attemptsLeft--;
         if(attemptsLeft == 0 ){
