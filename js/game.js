@@ -8,16 +8,17 @@
     var   guesses       = [];
     var   attemptsLeft  = 10;
     var   notToInclude  = ['Enter', 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'Shift', 'Meta'];
+    // var   underLineChar = underLineChar.join(' ');
 
     startGame();
-    document.querySelector('#unkownWord').innerHTML = underLineChar;
-    document.querySelector("#guessed").innerHTML = guesses;
+    document.querySelector('#unkownWord').innerHTML = underLineChar.join(' ');
+    document.querySelector("#guessed").innerHTML = guesses.join(' ');
     
     document.onkeyup = gameOn; 
 
     function gameOn(event){
       var input = event.key;  
-            
+
       if(input == 'Enter'){
         document.getElementById('rap').style.display = 'none';
         document.getElementById('wrapper1').style.display = 'block';
@@ -35,8 +36,8 @@
         attemptsLeft = 10;
 
         reset();
-        document.querySelector("#guessed").innerHTML = guesses;
-        document.querySelector('#unkownWord').innerHTML = underLineChar;
+        document.querySelector("#guessed").innerHTML = guesses.join(' ');
+        document.querySelector('#unkownWord').innerHTML = underLineChar.join(' ');
         document.querySelector('#guessesLeft').innerHTML = attemptsLeft;
         document.querySelector('#wins').innerHTML = wins;
     }    
@@ -95,8 +96,8 @@
 
     // this functin displays the variables that will change in the game.
     function display(){
-      document.querySelector("#guessed").innerHTML = guesses;
-      document.querySelector('#unkownWord').innerHTML = underLineChar;
+      document.querySelector("#guessed").innerHTML = guesses.join(' ');
+      document.querySelector('#unkownWord').innerHTML = underLineChar.join(' ');
       document.querySelector('#guessesLeft').innerHTML = attemptsLeft;
     }
 
