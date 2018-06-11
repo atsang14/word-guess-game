@@ -20,8 +20,11 @@
       input = input.toLowerCase();
       // This switches the screen if user presses 'Enter'
       if(input == 'enter'){
+
         document.getElementById('rap').style.display = 'none';
         document.getElementById('wrapper1').style.display = 'block';
+        reset();
+        guesses = [];
       }
 
       checkGuess(input);
@@ -81,7 +84,7 @@
 
           choseGameToPlay();
           document.querySelector("#wins").innerHTML = wins++;
-          guesses = []
+          guesses = [];
           startGame();
         } 
     }
@@ -115,7 +118,6 @@
 
       } 
       else if(gameNameArray.join('') == 'matrix'){
-
             document.getElementById('pacman').style.display = 'none';
             document.getElementById('matrix').style.display = 'block';
             document.querySelector('.code-wrapper').style.width = '1079px';
