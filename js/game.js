@@ -25,6 +25,7 @@
         document.getElementById('wrapper1').style.display = 'block';
         reset();
         guesses = [];
+        attemptsLeft = 10;
       }
 
       checkGuess(input);
