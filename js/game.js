@@ -115,13 +115,13 @@
 
       } 
       else if(gameNameArray.join('') == 'matrix'){
-            
+
             document.getElementById('pacman').style.display = 'none';
             document.getElementById('matrix').style.display = 'block';
             document.querySelector('.code-wrapper').style.width = '1079px';
             document.querySelector('.game').style.left = '91px'
       }
-    }9
+    }
 
 
 
