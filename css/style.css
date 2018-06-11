@@ -35,7 +35,7 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-color: cyan;
 }
 
 h2 {
@@ -78,7 +78,7 @@ h3{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-color: cyan;
 }
 
 .logo-triangle {
@@ -133,6 +133,15 @@ p{
     bottom: 610.7px;
     right: 73px;
 }
+
+.matrix {
+    display: none;
+    margin-left: 0px;
+    position: relative;
+    bottom: 523px;
+}
+
+
 .divider-wrapper {
     width: 550px;
     height: 500px;
@@ -140,7 +149,6 @@ p{
     position: relative;
     margin-left: 250px;
 }
-  .divider-wrapper:hover { cursor: none; }
  
   .code-wrapper {
     border: 5px solid #7FFF00;
@@ -151,25 +159,6 @@ p{
     height: 100%;
     background-size: cover;
   }
- 
-  .design-wrapper, .design-image {
-    border-radius: 0 8px 8px 0;
-    -moz-border-radius: 0 8px 8px 0;
-    -webkit-border-radius: 0 8px 8px 0;
-  }
-
-    .design-image {
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: relative;
- 
-      -webkit-transform: translateX(-50%);
-      transform: translateX(-50%);
- 
-      background: url("https://25.media.tumblr.com/afac00f83a373b58e00da1385faa4bbe/tumblr_n17rf1oSEj1qgfz6mo1_500.jpg") no-repeat;
-      background-size: cover;
-    }
 
     blink{
       -webkit-animation:blink 1.5s linear infinite;

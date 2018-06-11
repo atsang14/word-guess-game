@@ -1,14 +1,13 @@
     
 
     var   wins          = 0;
-    var   gameLibrary   = ["pacman", "kong"];
+    var   gameLibrary   = ["pacman", "matrix"];
     var   gameNameArray = [];
     var   underLineChar = [];
     var   input         = "";
     var   guesses       = [];
     var   attemptsLeft  = 10;
-    var   notToInclude  = ['Enter', 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'Shift', 'Meta'];
-    // var   underLineChar = underLineChar.join(' ');
+    var   notToInclude  = ['enter', 'arrowright', 'arrowleft', 'arrowup', 'arrowleft', 'arrowdown', 'shift', 'meta'];
 
     startGame();
     document.querySelector('#unkownWord').innerHTML = underLineChar.join(' ');
@@ -18,8 +17,9 @@
 
     function gameOn(event){
       var input = event.key;  
-
-      if(input == 'Enter'){
+      input = input.toLowerCase();
+      // This switches the screen if user presses 'Enter'
+      if(input == 'enter'){
         document.getElementById('rap').style.display = 'none';
         document.getElementById('wrapper1').style.display = 'block';
       }
@@ -54,10 +54,11 @@
         } 
       }
 
-      // && (notToInclude.include(guess) <= 0)
-      // && (guess !== 'Enter')
-      // debugger;
-
+      // if the guess has not already been guess and
+      // if the guess is not within the answer and 
+      // if its one of the keys that should not be included
+      // push the guess into the array called guesses which 
+      // holds the previous incorrect guesses only.
       if((guesses.indexOf(guess) < 0) && (gameNameArray.indexOf(guess) < 0) && (notToInclude.indexOf(guess) < 0)){
         guesses.push(guess);
         attemptsLeft--;
@@ -75,8 +76,10 @@
               counter++;
             }
         }
+
         if(counter == gameNameArray.length){
-          document.getElementById("pacman").style.display = "block";
+
+          choseGameToPlay();
           document.querySelector("#wins").innerHTML = wins++;
           guesses = []
           startGame();
@@ -101,9 +104,24 @@
       document.querySelector('#guessesLeft').innerHTML = attemptsLeft;
     }
 
+    // This function choses what game to play depending on what 
+    // what the the correct answer was and only displays if user gets it correct
+    function choseGameToPlay(){
+      if(gameNameArray.join('') == 'pacman'){
+            document.getElementById('matrix').style.display = 'none';
+            document.getElementById('pacman').style.display = 'block';
+            document.querySelector('.code-wrapper').style.width = '900px';
+            document.querySelector('.game').style.left = '0px'
 
-
-
+      } 
+      else if(gameNameArray.join('') == 'matrix'){
+            
+            document.getElementById('pacman').style.display = 'none';
+            document.getElementById('matrix').style.display = 'block';
+            document.querySelector('.code-wrapper').style.width = '1079px';
+            document.querySelector('.game').style.left = '91px'
+      }
+    }9
 
 
 
